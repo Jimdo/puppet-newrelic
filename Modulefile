@@ -1,0 +1,8 @@
+name 'newrelic'
+version '0.0.1'
+source 'https://github.com/joemiller/puppet-newrelic/'
+license '???'
+summary 'Newrelic module'
+description 'Install and manage newrelic'
+project_page 'https://github.com/joemiller/puppet-newrelic/'
+dependency 'puppetlabs-apt'
