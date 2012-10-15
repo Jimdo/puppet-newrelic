@@ -1,9 +1,9 @@
 class newrelic::package {
-    include newrelic::repo
+  include newrelic::repo
 
-    package { "newrelic-sysmond":
-        ensure  => latest,
-        notify  => Class["newrelic::server"],
-        require => Class["newrelic::repo"];
-    }
+  package { "newrelic-sysmond":
+    ensure  => latest,
+    notify  => Class["newrelic::server"],
+    require => Class["newrelic::repo"];
+  }
 }
