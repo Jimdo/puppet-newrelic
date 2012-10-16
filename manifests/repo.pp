@@ -8,6 +8,7 @@ class newrelic::repo {
         repos             => "non-free",
         key               => "548C16BF",
         key_server        => "subkeys.pgp.net",
+        include_src       => false
       }
     }
 
