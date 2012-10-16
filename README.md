@@ -14,7 +14,7 @@ Installation
 2. Copy this directory to your puppet master module path
 3. Apply the `newrelic` class to any nodes you want the agent installed on:
 
-  newrelic('<your license key>')
+    newrelic('<your license key>')
 
 4. Login to your New Relic dashboard and you should see your servers show up
    in a few minutes.
