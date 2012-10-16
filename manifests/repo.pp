@@ -4,7 +4,7 @@ class newrelic::repo {
     /Debian|Ubuntu/: {
       apt::source { "newrelic":
         location          => "http://apt.newrelic.com/debian/",
-        release           => "new-relic",
+        release           => "newrelic",
         repos             => "non-free",
         key               => "548C16BF",
         key_server        => "subkeys.pgp.net",
