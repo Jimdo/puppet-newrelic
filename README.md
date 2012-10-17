@@ -26,7 +26,7 @@ PHP Support
 
 You can install New Relic PHP Support like this:
 
-    class 'newrelic::php5' :
+    class { 'newrelic::php5' :
         appname => 'My app name'
     }
 
