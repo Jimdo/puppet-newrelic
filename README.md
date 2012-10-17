@@ -12,12 +12,25 @@ Installation
 1. Sign up for an account at http://newrelic.com/signup if you
    haven't yet.
 2. Copy this directory to your puppet master module path
-3. Apply the `newrelic` define to any nodes you want the agent installed on:
+3. Apply the `newrelic` class to any nodes you want the agent installed on:
 
-        newrelic('<your license key>')
+        class { 'newrelic' :
+            license_key => '<your license key>'
+        }
 
 4. Login to your New Relic dashboard and you should see your servers show up
    in a few minutes.
+
+PHP Support
+-----------
+
+You can install New Relic PHP Support like this:
+
+    class 'newrelic::php5' :
+        appname => 'My app name'
+    }
+
+For additional params like service notify, logging etc, please see the specs.
 
 Contributing
 ------------

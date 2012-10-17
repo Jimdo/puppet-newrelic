@@ -1,8 +1,8 @@
-define newrelic($license_key = $title) {
+class newrelic($license_key) {
 
   Class['newrelic::repo']
-    ~>Class['newrelic::package']
-    ~>Class['newrelic::server']
+    ->Class['newrelic::package']
+    ->Class['newrelic::server']
 
   include newrelic::repo
   include newrelic::package
