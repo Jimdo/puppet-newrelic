@@ -3,6 +3,7 @@ class newrelic::php5(
   $appname,
   $notify_service = undef,
   $enabled = true,
+  $framework = undef,
   $logfile = '/var/log/newrelic/php_agent.log',
   $loglevel = 'info',
   $browser_monitoring_auto_instrument = 1,

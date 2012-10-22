@@ -70,7 +70,8 @@ newrelic.appname = #{some_app_name}
 newrelic.enabled = true
 newrelic.logfile = /var/log/newrelic/php_agent.log
 newrelic.loglevel = info
-newrelic.browser_monitoring.auto_instrument = 1\n"
+newrelic.browser_monitoring.auto_instrument = 1
+newrelic.framework = \n"
         )
       end
     end
@@ -82,6 +83,7 @@ newrelic.browser_monitoring.auto_instrument = 1\n"
           :license_key => some_license_key,
           :appname => some_app_name,
           :enabled => false,
+          :framework => 'zend',
           :logfile => '/var/log/newrelic/some_log.log',
           :loglevel => 'someloglevel',
           :browser_monitoring_auto_instrument => 0,
@@ -96,7 +98,8 @@ newrelic.appname = #{some_app_name}
 newrelic.enabled = false
 newrelic.logfile = /var/log/newrelic/some_log.log
 newrelic.loglevel = someloglevel
-newrelic.browser_monitoring.auto_instrument = 0\n"
+newrelic.browser_monitoring.auto_instrument = 0
+newrelic.framework = zend\n"
         )
       end
     end
