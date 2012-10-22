@@ -26,6 +26,4 @@ class newrelic::php5(
     ensure => present,
     content => template("newrelic/php5-config.erb")
   }
-
 }
-Class['newrelic']->Class['newrelic::php5']
