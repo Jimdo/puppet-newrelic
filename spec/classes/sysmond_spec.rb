@@ -1,15 +1,20 @@
 require 'spec_helper'
 
-describe "newrelic" do
+describe 'newrelic::sysmond' do
 
   some_license_key = '0c3b79d7387aaaa2103ab38ae41577fc45141741'
 
   let(:params) { { :license_key => some_license_key  } }
 
-  it "should contain the subclasses" do
+  it "should install the package" do
+    should contain_package('newrelic-sysmond').with({
+      :ensure => 'installed',
+      :require => 'Class[Newrelic::Repo]'
+    })
+  end
+
+  it "should contain the repository" do
     should include_class('newrelic::repo')
-    should include_class('newrelic::package')
-    should include_class('newrelic::server')
   end
 
   it "should pass the license_key correctly" do

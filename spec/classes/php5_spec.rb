@@ -2,14 +2,42 @@ require 'spec_helper'
 
 describe 'newrelic::php5' do
 
+  some_license_key = 'some_license_key'
   some_app_name = 'some_appname'
   default_configpath = '/etc/php5/conf.d/newrelic.ini'
 
   let (:params ) {
     {
+      :license_key => some_license_key,
       :appname => some_app_name
     }
   }
+
+  it {
+    should include_class('newrelic::repo')
+  }
+
+  it "should define a service for the agent" do
+    should contain_service('newrelic-daemon').with({
+      :enable => true,
+      :ensure  => 'running',
+      :hasstatus => true,
+      :hasrestart => true,
+      :require => 'Package[newrelic-php5]'
+    })
+  end
+
+  it "should set the license key in the newrelic agent config" do
+    should contain_file('/etc/newrelic/newrelic.cfg').with({
+      :ensure  => 'present',
+      :owner   => 'root',
+      :group   => 'root',
+      :mode    => '0644',
+      :require => 'Package[newrelic-php5]',
+      :notify  => 'Service[newrelic-daemon]',
+      :content => /license_key=#{some_license_key}/
+    })
+  end
 
   context 'on Debian systems' do
 
@@ -20,7 +48,10 @@ describe 'newrelic::php5' do
     }
 
     it 'should install the php module' do
-      should contain_package('newrelic-php5').with(:ensure => 'installed')
+      should contain_package('newrelic-php5').with({
+        :ensure => 'installed',
+        :require => 'Class[Newrelic::Repo]'
+      })
     end
 
     it 'should notify the webserver after config change' do
@@ -48,6 +79,7 @@ newrelic.browser_monitoring.auto_instrument = 1\n"
 
       let (:params ) {
         {
+          :license_key => some_license_key,
           :appname => some_app_name,
           :enabled => false,
           :logfile => '/var/log/newrelic/some_log.log',
@@ -74,6 +106,7 @@ newrelic.browser_monitoring.auto_instrument = 0\n"
 
     let (:params ) {
       {
+        :license_key => some_license_key,
         :appname => some_app_name,
         :notify_service => 'lighttpd'
       }
@@ -89,6 +122,7 @@ newrelic.browser_monitoring.auto_instrument = 0\n"
 
     let (:params ) {
       {
+        :license_key => some_license_key,
         :appname => some_app_name
       }
     }

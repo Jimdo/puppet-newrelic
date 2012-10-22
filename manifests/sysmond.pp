@@ -1,7 +1,11 @@
-class newrelic::server(
-  $license_key
-) {
-  if $license_key == undef{ fail('$license_key not defined') }
+class newrelic::sysmond($license_key) {
+
+  include newrelic::repo
+
+  package { 'newrelic-sysmond':
+    ensure  => installed,
+    require => Class[newrelic::repo]
+  }
 
   Exec['newrelic-set-license', 'newrelic-set-ssl'] {
     path +> ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin']
@@ -24,7 +28,6 @@ class newrelic::server(
     ensure  => running,
     hasstatus => true,
     hasrestart => true,
-    require => Class["newrelic::package"];
+    require => Package['newrelic_sysmond']
   }
-
 }
