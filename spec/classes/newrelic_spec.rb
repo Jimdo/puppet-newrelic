@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe "newrelic" do
 
   some_license_key = '0c3b79d7387aaaa2103ab38ae41577fc45141741'

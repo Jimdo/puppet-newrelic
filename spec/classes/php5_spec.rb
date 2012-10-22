@@ -1,3 +1,5 @@
+require 'spec_helper'
+
 describe 'newrelic::php5' do
 
   some_app_name = 'some_appname'
