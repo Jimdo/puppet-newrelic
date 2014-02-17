@@ -7,7 +7,7 @@ class newrelic::repo {
         release           => "newrelic",
         repos             => "non-free",
         key               => "548C16BF",
-        key_server        => "subkeys.pgp.net",
+        key_server        => "keyserver.ubuntu.com",
         include_src       => false
       }
     }
