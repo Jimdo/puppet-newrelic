@@ -18,7 +18,7 @@ describe 'newrelic::repo' do
         :release     => "newrelic",
         :repos       => "non-free",
         :key         => "548C16BF",
-        :key_server  => "subkeys.pgp.net",
+        :key_server  => "keyserver.ubuntu.com",
         :include_src => false
       })
     end
