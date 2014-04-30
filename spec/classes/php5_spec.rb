@@ -39,6 +39,12 @@ describe 'newrelic::php5' do
     })
   end
 
+  it "should set the license key in the newrelic php config" do
+    should contain_file(default_configpath).with({
+      :content => /^newrelic.license = #{some_license_key}$/
+    })
+  end
+
   context 'on Debian systems' do
 
     let (:facts) {
@@ -71,7 +77,8 @@ newrelic.enabled = true
 newrelic.logfile = /var/log/newrelic/php_agent.log
 newrelic.loglevel = info
 newrelic.browser_monitoring.auto_instrument = 1
-newrelic.framework = \n"
+newrelic.framework = 
+newrelic.license = #{some_license_key}\n"
         )
       end
     end
@@ -99,7 +106,8 @@ newrelic.enabled = false
 newrelic.logfile = /var/log/newrelic/some_log.log
 newrelic.loglevel = someloglevel
 newrelic.browser_monitoring.auto_instrument = 0
-newrelic.framework = zend\n"
+newrelic.framework = zend
+newrelic.license = #{some_license_key}\n"
         )
       end
     end
