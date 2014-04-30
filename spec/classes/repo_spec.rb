@@ -8,7 +8,7 @@ describe 'newrelic::repo' do
       {
         :operatingsystem => 'Debian',
         :lsbdistcodename => 'squeeze',
-
+        :lsbdistid => 'debian',
       }
     }
 
